@@ -41,3 +41,11 @@ yarn-error.log*
 next-env.d.ts
 .env.local
 .env*.local
+.env
+
+# AGENTS
+.agents/*
+.claude/*
+
+# Design inspiration
+design/*
