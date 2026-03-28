@@ -46,6 +46,14 @@ next-env.d.ts
 # AGENTS
 .agents/*
 .claude/*
+.kilocode/
+.kiro/
+.qwen/
+.trae/
+.windsurf/
+.zencoder/
+skills-lock.json
+skills/
 
 # Design inspiration
 design/*
