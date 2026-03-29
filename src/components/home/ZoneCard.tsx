@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * ZoneCard Component
@@ -15,20 +16,21 @@ interface ZoneCardProps {
     name: string;
     district: string;
     count: number;
+    image: string;
   };
 }
 
-// Background gradients for each zone (Portugal-themed)
-const zoneGradients: Record<string, string> = {
-  lisboa: "from-primary-600 to-primary-800",
-  porto: "from-blue-600 to-blue-800",
-  algarve: "from-amber-500 to-orange-600",
-  coimbra: "from-purple-600 to-purple-800",
-  braga: "from-green-600 to-green-800",
+// Background gradients for each zone (Portugal-themed) as overlay
+const zoneOverlays: Record<string, string> = {
+  lisboa: "from-primary-900/70 to-primary-600/50",
+  porto: "from-blue-900/70 to-blue-600/50",
+  algarve: "from-amber-900/70 to-orange-600/50",
+  coimbra: "from-purple-900/70 to-purple-600/50",
+  braga: "from-green-900/70 to-green-600/50",
 };
 
 export function ZoneCard({ zone }: ZoneCardProps) {
-  const gradient = zoneGradients[zone.id] || "from-primary-500 to-primary-700";
+  const overlay = zoneOverlays[zone.id] || "from-charcoal/70 to-charcoal/50";
 
   return (
     <Link
@@ -36,13 +38,17 @@ export function ZoneCard({ zone }: ZoneCardProps) {
       className="group relative overflow-hidden rounded-xl aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
       aria-label={`Ver imóveis em ${zone.name}: ${zone.count} propriedades`}
     >
-      {/* Background Gradient */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${gradient} transition-transform duration-300 group-hover:scale-105`}
-      />
-
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={zone.image}
+          alt=""
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        {/* Gradient Overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${overlay}`} />
+      </div>
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center text-white text-center p-4">

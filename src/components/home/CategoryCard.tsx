@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Building2,
   Home,
@@ -23,6 +24,7 @@ interface CategoryCardProps {
     label: string;
     icon: "apartamento" | "casa" | "duplex" | "studio" | "terreno" | "local";
     count: number;
+    image: string;
   };
 }
 
@@ -41,21 +43,35 @@ export function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/search?category=${category.id}`}
-      className="group flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-light-gray shadow-sm hover:shadow-lg hover:border-primary-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300"
+      className="group relative overflow-hidden rounded-xl aspect-square focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
       aria-label={`Ver ${category.label}: ${category.count} propriedades`}
     >
-      {/* Icon */}
-      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary-50 text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-colors duration-200 mb-3">
-        <Icon className="w-6 h-6" aria-hidden="true" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={category.image}
+          alt=""
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
       </div>
 
-      {/* Label */}
-      <h3 className="font-heading text-base font-semibold text-charcoal text-center mb-1">
-        {category.label}
-      </h3>
+      {/* Content */}
+      <div className="relative h-full flex flex-col items-center justify-end p-4 text-center">
+        {/* Icon */}
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white mb-2 group-hover:bg-primary-500 group-hover:text-white transition-colors duration-200">
+          <Icon className="w-5 h-5" aria-hidden="true" />
+        </div>
 
-      {/* Count */}
-      <p className="text-sm text-medium-gray">{category.count} propriedades</p>
+        {/* Label */}
+        <h3 className="font-heading text-base font-semibold text-white text-center mb-1 drop-shadow-md">
+          {category.label}
+        </h3>
+
+        {/* Count */}
+        <p className="text-sm text-white/80">{category.count} propriedades</p>
+      </div>
     </Link>
   );
 }

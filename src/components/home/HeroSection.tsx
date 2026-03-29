@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SearchBarHome } from "./SearchBarHome";
 
 /**
@@ -14,17 +15,20 @@ import { SearchBarHome } from "./SearchBarHome";
 export function HeroSection() {
   return (
     <section
-      className="relative w-full min-h-[600px] flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-accent-50"
+      className="relative w-full max-h-[400px] flex items-center justify-center"
       aria-labelledby="hero-heading"
     >
-      {/* Background Pattern - Subtle geometric overlay */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234A90E2' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-        aria-hidden="true"
-      />
+      {/* Background Image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/liam-mckay-VHWyqXsWHg0-unsplash.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/60 to-charcoal/40" />
+      </div>
 
       {/* Content Container */}
       <div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">
@@ -32,18 +36,18 @@ export function HeroSection() {
           {/* Headline - H1 per DESIGN.md */}
           <h1
             id="hero-heading"
-            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal leading-tight mb-6"
+            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-lg"
             style={{
               fontSize: "clamp(2.5rem, 5vw, 3.75rem)",
               lineHeight: 1.1,
             }}
           >
             Encontra o teu lar em{" "}
-            <span className="text-primary-500">Portugal</span>
+            <span className="text-primary-300">Portugal</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-medium-gray mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Arrendamento, venda e temporário em todo o Portugal continental e
             ilhas. Encontre a casa perfeita para si.
           </p>
@@ -53,7 +57,7 @@ export function HeroSection() {
             {/* Primary CTA - Search */}
             <Link
               href="/search"
-              className="inline-flex items-center justify-center bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+              className="inline-flex items-center justify-center bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-charcoal"
             >
               Procurar propriedades
               <svg
@@ -75,17 +79,17 @@ export function HeroSection() {
             {/* Secondary CTA - Learn More */}
             <Link
               href="#sobre"
-              className="inline-flex items-center justify-center bg-white border-2 border-primary-500 text-primary-500 hover:bg-primary-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+              className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-semibold py-4 px-8 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-charcoal"
             >
               Saber mais
             </Link>
           </div>
 
           {/* Trust Indicators - Below CTAs */}
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-medium-gray">
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-white/80">
             <div className="flex items-center gap-2">
               <svg
-                className="w-5 h-5 text-success"
+                className="w-5 h-5 text-primary-300"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -100,7 +104,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <svg
-                className="w-5 h-5 text-success"
+                className="w-5 h-5 text-primary-300"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -115,7 +119,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <svg
-                className="w-5 h-5 text-success"
+                className="w-5 h-5 text-primary-300"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -130,10 +134,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Search Bar - Below Trust Indicators */}
-          <div className="mt-12">
-            <SearchBarHome />
-          </div>
+        </div>
+      </div>
+
+      {/* Search Bar - Overlapping bottom edge */}
+      <div className="absolute bottom-0 translate-y-1/2 left-0 right-0 z-30 px-4 w-full flex justify-center">
+        <div className="w-full max-w-4xl">
+          <SearchBarHome />
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { ZoneCard } from "./ZoneCard";
+import { getRandomImageForIndex } from "@/utils/images";
 
 /**
  * ZonesGrid Component - FE-006
@@ -17,30 +18,35 @@ const zones = [
     name: "Lisboa",
     district: "Distrito de Lisboa",
     count: 892,
+    image: getRandomImageForIndex(0),
   },
   {
     id: "porto",
     name: "Porto",
     district: "Distrito do Porto",
     count: 567,
+    image: getRandomImageForIndex(1),
   },
   {
     id: "algarve",
     name: "Algarve",
     district: "Região do Algarve",
     count: 423,
+    image: getRandomImageForIndex(2),
   },
   {
     id: "coimbra",
     name: "Coimbra",
     district: "Distrito de Coimbra",
     count: 189,
+    image: getRandomImageForIndex(3),
   },
   {
     id: "braga",
     name: "Braga",
     district: "Distrito de Braga",
     count: 156,
+    image: getRandomImageForIndex(0),
   },
 ];
 

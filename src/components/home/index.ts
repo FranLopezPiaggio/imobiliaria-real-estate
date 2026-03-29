@@ -10,3 +10,6 @@ export { CategoriesGrid } from "./CategoriesGrid";
 export { CategoryCard } from "./CategoryCard";
 export { ZonesGrid } from "./ZonesGrid";
 export { ZoneCard } from "./ZoneCard";
+export { BlogPreview } from "./BlogPreview";
+export { BlogCard } from "./BlogCard";
+export { AboutSection } from "./AboutSection";

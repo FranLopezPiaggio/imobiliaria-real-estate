@@ -1,4 +1,5 @@
 import { CategoryCard } from "./CategoryCard";
+import { getRandomImageForIndex } from "@/utils/images";
 
 /**
  * CategoriesGrid Component - FE-005
@@ -17,43 +18,49 @@ const categories = [
     label: "Apartamento",
     icon: "apartamento" as const,
     count: 423,
+    image: getRandomImageForIndex(0),
   },
   {
     id: "casa",
     label: "Casa",
     icon: "casa" as const,
     count: 287,
+    image: getRandomImageForIndex(1),
   },
   {
     id: "duplex",
     label: "Duplex",
     icon: "duplex" as const,
     count: 156,
+    image: getRandomImageForIndex(2),
   },
   {
     id: "studio",
     label: "Studio",
     icon: "studio" as const,
     count: 89,
+    image: getRandomImageForIndex(3),
   },
   {
     id: "terreno",
     label: "Terreno",
     icon: "terreno" as const,
     count: 67,
+    image: getRandomImageForIndex(0),
   },
   {
     id: "local",
     label: "Local",
     icon: "local" as const,
     count: 45,
+    image: getRandomImageForIndex(1),
   },
 ];
 
 export function CategoriesGrid() {
   return (
     <section
-      className="py-16 bg-off-white"
+      className="pt-20 pb-10 bg-off-white"
       aria-labelledby="categories-heading"
     >
       <div className="container mx-auto px-4">
