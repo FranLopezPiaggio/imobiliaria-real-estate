@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import { FilterSidebar, SearchHeader } from "@/components/search";
+import { FilterSidebar } from "@/components/search/FilterSidebar";
+import { SearchHeader } from "@/components/search/SearchHeader";
 
 /**
  * Search Page - FE-012
